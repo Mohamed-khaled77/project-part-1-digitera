@@ -1,0 +1,169 @@
+### Product Discovery
+
+The website should allow customers to:
+
+1. Browse perfume products.
+2. Search for perfumes.
+3. Filter products by category and occasion, including occasions such as birthday, wedding, gift, and personal use.
+4. Filter products by price range.
+5. Filter products by scent family/notes, such as floral, woody, oriental, and fresh.
+6. Sort products by price in ascending or descending order.
+7. View product details including:
+
+   * name
+   * price
+   * size/volume
+   * availability
+   * image
+   * description
+   * ingredients/notes
+   * and other relevant product information already implied by the business requirements.
+
+### Product Variants
+
+Customers should be able to select product variants, such as:
+
+* bottle size
+* gift wrapping/packaging
+
+Do not invent additional variants.
+
+### Cart
+
+Customers should be able to:
+
+* add products to their cart
+* remove products from their cart
+* update product quantities
+* view the cart subtotal
+* view the total price
+
+### Checkout
+
+Customers should be able to provide:
+
+* name
+* phone number
+* delivery address
+
+They should also be able to optionally add a note/message with their order, such as a gift message.
+
+Customers should be able to review their order summary before sending it through WhatsApp.
+
+Customers should then be redirected to WhatsApp with the order details pre-filled.
+
+The WhatsApp message should contain:
+
+* products
+* quantities
+* prices
+* total
+* customer information
+
+Customers should be able to complete checkout **without creating an account**.
+
+### WhatsApp Order Handling
+
+After the customer sends/prepares the order through WhatsApp, Ahmed/the business owner will communicate manually with the customer through WhatsApp regarding:
+
+* order confirmation
+* payment
+* delivery arrangements
+
+Do not introduce automatic payment or delivery functionality.
+
+### Other Customer Features
+
+Customers should be able to:
+
+* view FAQs
+* view product reviews and ratings
+* contact the business through the provided contact channels:
+
+  * WhatsApp
+  * phone
+  * email
+  * contact form
+* add products to a wishlist
+* remove products from a wishlist
+
+### Business Owner Features
+
+Ahmed should be able to:
+
+* add products
+* edit products
+* remove products
+* mark products as available
+* mark products as out of stock
+* update product prices
+* update product details
+* view and manage submitted inquiries
+
+Do not expand this into a larger admin system.
+
+---
+
+# Private Non-Functional Requirements
+
+These requirements should also be discovered gradually.
+
+Do not immediately tell the student:
+
+> "We have 12 non-functional requirements."
+
+Instead, express them naturally as business expectations or concerns when the student asks appropriate questions.
+
+The website should meet the following requirements:
+
+### Performance
+
+Main or frequently visited pages, including:
+
+* home page
+* product listing
+* product details
+
+should initially load within **2–3 seconds under normal network conditions on Fast 3G**.
+
+You may express this naturally as:
+
+> "I don't want customers waiting around for the perfume pages to load, especially on normal mobile internet."
+
+If the student asks for a measurable target, provide the 2–3 second target.
+
+### Images
+
+Product images should be optimized and lazy loaded when they are outside the user's viewport.
+
+Do not introduce other image-management features.
+
+### Security
+
+All communication between the client and server must use HTTPS.
+
+Do not introduce additional security requirements unless they are already specified.
+
+### Availability
+
+The system should be available **99.9% of the time**, excluding scheduled maintenance.
+
+### Responsive Design
+
+The website should work properly across:
+
+* mobile
+* tablet
+* desktop
+
+### Keyboard Accessibility
+
+Interactions should be accessible using a keyboard.
+
+### Alternative Text
+
+Images should have appropriate alternative text.
+
+### Accessibility
+
+The website should follow common web accessibility guidelines.
