@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useToast } from "@/components/ui/Toast";
 import { useCart } from "@/features/cart";
 import { productPaths } from "@/features/products/paths";
 import type { Product } from "@/features/products/types/product.types";
@@ -14,7 +15,19 @@ type ProductCardProps = {
 /** US-01 & Figma: Product card matching exact Figma specs (302x467, 270x320 image, 39px button). */
 export function ProductCard({ product }: ProductCardProps) {
   const { addItem } = useCart();
+  const { showToast } = useToast();
   const image = product.images[0];
+
+  const handleAddToCart = () => {
+    addItem({
+      productId: product.id,
+      name: product.name,
+      price: product.price,
+      image,
+      selectedOptions: {},
+    });
+    showToast(`${product.name} added to cart successfully.`);
+  };
 
   return (
     <article className="flex min-w-0 w-full max-w-[302px] h-[467px] flex-col items-start justify-between gap-4 rounded-lg bg-white p-4 mx-auto transition-shadow hover:shadow-md border border-[#ebe6de]">
@@ -62,15 +75,7 @@ export function ProductCard({ product }: ProductCardProps) {
         <button
           type="button"
           className="flex h-[39px] w-full cursor-pointer items-center justify-center rounded border border-solid border-[#ebe6de] py-[12px] text-[11px] font-semibold uppercase whitespace-nowrap text-[#1a1a1a] transition-colors hover:bg-[#1a1a1a] hover:text-white"
-          onClick={() =>
-            addItem({
-              productId: product.id,
-              name: product.name,
-              price: product.price,
-              image,
-              selectedOptions: {},
-            })
-          }
+          onClick={handleAddToCart}
         >
           Add to Cart +
         </button>
