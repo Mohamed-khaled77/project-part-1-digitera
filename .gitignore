@@ -23,6 +23,15 @@
 # misc
 .DS_Store
 *.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+*.jwk
+*.der
+*.ovpn
+*.mobileprovision
 
 # debug
 npm-debug.log*
@@ -33,6 +42,16 @@ yarn-error.log*
 # env files
 .env*
 !.env.example
+
+# local credentials and tool configuration
+.mcp.json
+.npmrc
+*.token
+*.secret
+*.credentials
+*.credentials.*
+credentials*.json
+service-account*.json
 
 # cypress
 /cypress/videos
@@ -45,6 +64,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# mcp
-.mcp.json

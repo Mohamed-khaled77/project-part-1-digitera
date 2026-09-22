@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState, type ReactNode } from "react";
+import { useToast } from "@/components/ui/Toast";
 import { useCart } from "@/features/cart/hooks/useCart";
 import { ProductBreadcrumbs } from "@/features/products/components/ProductBreadcrumbs";
 import { ProductDetails } from "@/features/products/components/ProductDetails";
@@ -32,6 +33,7 @@ export function ProductDetailsPage({
   const productsListQuery = useProducts({ page: 1, pageSize: 6 });
   const product = productQuery.data;
   const { addItem } = useCart();
+  const { showToast } = useToast();
 
   const [quantity, setQuantity] = useState(1);
   const [selectedOptions, setSelectedOptions] = useState<
@@ -71,6 +73,17 @@ export function ProductDetailsPage({
 
   const allProducts = productsListQuery.data?.items || [];
   const totalPrice = resolvedPrice * quantity;
+  const handleAddToCart = () => {
+    addItem({
+      productId: product.id,
+      name: product.name,
+      price: resolvedPrice,
+      image: product.images[0],
+      selectedOptions,
+      quantity,
+    });
+    showToast(`${product.name} added to cart successfully.`);
+  };
 
   return (
     <article className="min-h-screen w-full overflow-x-hidden bg-[#faf8f5] pb-16 text-[#1a1a1a]">
@@ -136,16 +149,7 @@ export function ProductDetailsPage({
               ) : (
                 <button
                   type="button"
-                  onClick={() =>
-                    addItem({
-                      productId: product.id,
-                      name: product.name,
-                      price: resolvedPrice,
-                      image: product.images[0],
-                      selectedOptions,
-                      quantity,
-                    })
-                  }
+                  onClick={handleAddToCart}
                   className="flex h-[50px] w-full max-w-[449px] cursor-pointer items-center justify-center rounded bg-[#1a1a1a] px-6 text-[12px] font-semibold uppercase tracking-wider text-white transition-colors hover:bg-[#333333] sm:w-[449px]"
                 >
                   Add to Cart / {formatWholePrice(totalPrice)}
@@ -156,10 +160,7 @@ export function ProductDetailsPage({
         </div>
 
         {/* Olfactory Companions / Related Products Section */}
-        <RelatedProducts
-          currentProductId={product.id}
-          products={allProducts}
-        />
+        <RelatedProducts currentProductId={product.id} products={allProducts} />
       </div>
     </article>
   );
